@@ -42,6 +42,7 @@ public class Arrays_sobredimensionados {
         for(int i = 0; i < cantidad; i++){
             System.out.println(nombres[i]);
         }
+
         //Ejercicio propuesto
         final int TOTALENTEROS = 10;
         Scanner es = new Scanner(System.in);
@@ -52,13 +53,26 @@ public class Arrays_sobredimensionados {
         System.out.println("Digita 5 números: ");
         for(int i=0; i < 5; i++) {
             numeroUsuario = es.nextInt();
-            if (total > TOTALENTEROS) {
-                numeros[TOTALENTEROS] = numeroUsuario;
+            if (total < TOTALENTEROS) {
+                numeros[total] = numeroUsuario;
                 total++;
             }
         }
-        System.out.println("Los numeros que guardas son: ");
-        for(int i = 0; i > total; i++) {
+
+        System.out.print("¿Que posición quieres borrar? ");
+        numeroABorrar = es.nextInt() - 1;
+
+        if ((numeroABorrar < 0 ) || (numeroABorrar >= total)) {
+            System.out.println("¡Posicion no valida!");
+        } else {
+            for (int i = numeroABorrar; i < total - 1; i++) {
+                numeros[i] = numeros[i+1];
+            }
+            total--;
+        }
+
+        System.out.println("Los números que guardas son: ");
+        for(int i = 0; i < total; i++) {
             System.out.println(numeros[i]);
         }
 
